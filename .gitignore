@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Take-home reference docs (not part of the deliverable)
+Email_Instructions.pdf
+UT-ISO-TakeHome-Plan.docx.pdf
