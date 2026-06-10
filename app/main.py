@@ -24,7 +24,7 @@ app = FastAPI(title="pipeline-demo", version="0.1.0")
 
 class Action(str, Enum):
     """Allow-list of supported transforms. Anything else is rejected by the
-    schema before it ever reaches our handler (default-deny)."""
+    schema before it ever reaches the handler (default-deny)."""
 
     upper = "upper"
     lower = "lower"
@@ -58,7 +58,7 @@ def readyz() -> dict[str, str]:
 def transform(req: TransformRequest) -> TransformResponse:
     """Apply an allow-listed transform to bounded input.
 
-    Note: we operate on the validated model only and never log req.text.
+    Note: operates on the validated model only; req.text is never logged.
     """
     if req.action is Action.upper:
         result = req.text.upper()
