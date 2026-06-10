@@ -7,6 +7,14 @@
 # than silently picking up whatever the tag points at today.
 FROM python:3.13-slim@sha256:b04b5d7233d2ad9c379e22ea8927cd1378cd15c60d4ef876c065b25ea8fb3bf3 AS base
 
+# Patch OS packages for security fixes published after this digest was cut.
+# The pinned digest keeps the base reproducible, but it can ship known-vulnerable
+# system libraries (e.g. openssl) until the digest is next refreshed. Upgrading
+# here closes that gap so the Trivy gate stays green between digest bumps.
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && rm -rf /var/lib/apt/lists/*
+
 # ---- Builder stage --------------------------------------------------------
 # Build dependencies into an isolated venv. Build tooling lives only here and
 # never ships to the final image, shrinking the runtime attack surface.
