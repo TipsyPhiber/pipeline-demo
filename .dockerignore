@@ -1,0 +1,20 @@
+# Keep the build context minimal: don't leak source history, tests, docs, or
+# local environments into image layers, and keep builds fast/reproducible.
+.git
+.gitignore
+.github
+
+# Local Python environments and caches
+.venv
+venv
+__pycache__
+*.py[cod]
+.pytest_cache
+
+# Tests and dev-only deps (not needed at runtime)
+tests
+requirements-dev.txt
+
+# Docs and take-home reference material
+*.md
+*.pdf
