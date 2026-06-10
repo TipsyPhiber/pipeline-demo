@@ -1,0 +1,12 @@
+# Require review from the repo owner on everything by default...
+*                       @TipsyPhiber
+
+# ...with explicit ownership of the security-sensitive surfaces. Changes to the
+# pipeline, the container build, or the dependency manifests are exactly where a
+# supply-chain compromise would land, so they must not merge without review.
+/.github/workflows/     @TipsyPhiber
+/.github/CODEOWNERS      @TipsyPhiber
+/Dockerfile             @TipsyPhiber
+/.dockerignore          @TipsyPhiber
+/requirements.txt       @TipsyPhiber
+/requirements-dev.txt   @TipsyPhiber
